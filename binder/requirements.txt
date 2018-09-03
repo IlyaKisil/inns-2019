@@ -1,2 +1,3 @@
 jupyterlab==0.34.0
 ipywidgets==7.3
+plotly
