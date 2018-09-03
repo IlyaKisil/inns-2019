@@ -1,0 +1,4 @@
+jupyter labextension install @jupyterlab/toc --no-build
+jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.37 --no-build
+jupyter lab clean
+jupyter lab build
