@@ -1,0 +1,6 @@
+FROM conda/miniconda3
+
+RUN mkdir -p /installation
+WORKDIR /installation
+COPY docker/setup_base.sh .
+RUN /bin/bash -c "source setup_base.sh"
