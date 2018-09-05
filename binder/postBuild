@@ -4,6 +4,6 @@ jupyter labextension install @jupyterlab/plotly-extension@0.17 --no-build
 jupyter lab clean
 jupyter lab build
 
-VENV_NAME=$(head -n 1 venv_name.txt | cut -f2 -d ' ')
+VENV_NAME=$(head -n 1 binder/venv_name.txt | cut -f2 -d ' ')
 
 python -m ipykernel install --user --name ${VENV_NAME} --display-name ${VENV_NAME}

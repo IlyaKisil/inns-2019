@@ -17,7 +17,7 @@ function red(){
 }
 
 #VENV_NAME="inns-2019"
-VENV_NAME=$(head -n 1 venv_name.txt | cut -f2 -d ' ')
+VENV_NAME=$(head -n 1 binder/venv_name.txt | cut -f2 -d ' ')
 
 # Check if you are already in the environment
 if [[ $PATH != *$VENV_NAME* ]]; then
@@ -30,7 +30,7 @@ if [[ $PATH != *$VENV_NAME* ]]; then
     else
         # Create the environment and activate
         echo -e "Conda env '$VENV_NAME' `red "doesn't exist"`."
-        echo -e "Creating `green "new venv" $VENV_NAME` using conda."
+        echo -e "Creating `green "new venv" $VENV_NAME` using conda.\n"
         conda create -y --name ${VENV_NAME} python=3.6
         source activate $VENV_NAME
 
@@ -39,16 +39,16 @@ fi
 
 VENV_HOME="$(which python)"
 
-pip install --upgrade pip
+pip install --no-cache-dir --upgrade pip
 
 echo -e "\n\nInstalling `green "JupyterLab and Node.js"`\n\n"
 conda install -y -c conda-forge nodejs jupyterlab
 
 echo -e "\n\nInstalling packages specified in `green $PWD/"requirements.txt"`\n\n"
-pip install -r requirements.txt
+pip install -r binder/requirements.txt --no-cache-dir
 
 echo -e "\n\nInstalling extensions for JupyterLab specified in `green $PWD/"postBuild"`\n\n"
-sh -e postBuild
+sh -e binder/postBuild
 
 printf "\n"
 printf "====================================================================\n"
@@ -59,13 +59,15 @@ printf "====================================================================\n"
 printf "\n"
 
 printf "1) The python interpreter located in: \n\n\t"
-printf "`green ${VENV_HOME}`\n\n"
+printf "`green $VENV_HOME`\n\n"
 
 printf "2) To activate this environment (with JupyterLab and extensions), use: \n\n\t"
 printf "`green "> source activate inns-2019"`\n\n"
 
-printf "3) For `green 'Jupyter Notebooks'` use the associated kernel which is located in: \n\n\t"
-jupyter kernelspec list | grep "$VENV_NAME"
+printf "3) For notebooks use the associated kernel: `green $VENV_NAME`. \n\n"
+
+printf "4) To see location with its specifications, use: \n\n\t"
+printf "`green "> jupyter kernelspec list | grep $VENV_NAME"`"
 
 printf "\n\n"
 

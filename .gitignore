@@ -4,7 +4,6 @@ Untitled*.ipynb
 .coveragerc-dev
 .reports/
 docker/base-test
-docker/inns-test
 
 
 
