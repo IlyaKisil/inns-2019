@@ -1,8 +1,10 @@
 FROM conda/miniconda3
+ARG VENV_NAME
 
 ENV NB_USER attendee
 ENV NB_UID 1000
 ENV HOME /home/${NB_USER}
+ENV VENV_NAME $VENV_NAME
 
 RUN adduser --disabled-password \
     --gecos "Default user" \
@@ -18,4 +20,4 @@ WORKDIR ${HOME}
 RUN /bin/bash -c "source binder/bootstrap_venv.sh"
 
 CMD ["/bin/bash", "-c", \
-     "source activate inns-2019 && jupyter lab --port=8888 --ip=0.0.0.0"]
+     "source activate $VENV_NAME && jupyter lab --port=8888 --ip=0.0.0.0 --no-browser"]
