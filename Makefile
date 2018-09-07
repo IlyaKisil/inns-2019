@@ -1,10 +1,15 @@
 .PHONY: image container venv jl-session
 
 
-#VENV_NAME ?= inns-2019
-VENV_NAME   = `head -n 1 binder/venv_name.txt | cut -f2 -d ' '`
-IMAGE_NAME  = $(VENV_NAME)
 SHELL       = /bin/bash
+
+#VENV_NAME   = inns-2019
+VENV_NAME   = `head -n 1 binder/venv_name.txt | cut -f2 -d ' '`
+
+#IMAGE_NAME  = inns-2019
+IMAGE_NAME  = $(VENV_NAME)
+
+#dockerfile ?= docker/inns-2019
 dockerfile ?= docker/$(VENV_NAME)
 
 
@@ -24,10 +29,9 @@ container:
 
 venv:
 	@printf "Creating virtual environment -> $(VENV_NAME)\n\n"
-	source binder/bootstrap_venv.sh
+	source binder/bootstrap_venv.sh $(VENV_NAME)
 
 
 jl-session:
 	@printf "Running JupyterLab from $(VENV_NAME)\n\n"
-	source activate $(VENV_NAME)
-	jupyter lab --port=8888
+	source activate $(VENV_NAME) && jupyter lab --port=8888 --ip=0.0.0.0

@@ -1,5 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
+# First argument specifies the name of venv
+
+
+###-------------------------- UTILS
 RED="\033[0;31m"
 GREEN="\033[0;32m"
 CYAN="\033[0;36m"
@@ -16,23 +20,28 @@ function red(){
     printf "${RED}$1${WHITE}"
 }
 
-#VENV_NAME="inns-2019"
-VENV_NAME=$(head -n 1 binder/venv_name.txt | cut -f2 -d ' ')
+
+###-------------------------- MAIN
+
+#venv_name="inns-2019"
+#venv_name=$(head -n 1 binder/venv_name.txt | cut -f2 -d ' ')
+venv_name=$1
+
 
 # Check if you are already in the environment
-if [[ $PATH != *$VENV_NAME* ]]; then
+if [[ $PATH != *$venv_name* ]]; then
     # Check if the environment exists
-    source activate $VENV_NAME
+    source activate $venv_name
     if [ $? -eq 0 ]; then
-        echo -e "Conda env '$VENV_NAME' `red "exists"`."
+        echo -e "Conda env '$venv_name' `red "exists"`."
         echo -e "`red "Terminating venv configuration"`."
         exit 1
     else
         # Create the environment and activate
-        echo -e "Conda env '$VENV_NAME' `red "doesn't exist"`."
-        echo -e "Creating `green "new venv" $VENV_NAME` using conda.\n"
-        conda create -y --name ${VENV_NAME} python=3.6
-        source activate $VENV_NAME
+        echo -e "Conda env '$venv_name' `red "doesn't exist"`."
+        echo -e "Creating `green "new venv" $venv_name` using conda.\n"
+        conda create -y --name ${venv_name} python=3.6
+        source activate $venv_name
 
     fi
 fi
@@ -62,12 +71,12 @@ printf "1) The python interpreter located in: \n\n\t"
 printf "`green $VENV_HOME`\n\n"
 
 printf "2) To activate this environment (with JupyterLab and extensions), use: \n\n\t"
-printf "`green "> source activate inns-2019"`\n\n"
+printf "`green "> source activate $venv_name"`\n\n"
 
-printf "3) For notebooks use the associated kernel: `green $VENV_NAME`. \n\n"
+printf "3) For notebooks use the associated kernel: `green $venv_name`. \n\n"
 
 printf "4) To see location with its specifications, use: \n\n\t"
-printf "`green "> jupyter kernelspec list | grep $VENV_NAME"`"
+printf "`green "> jupyter kernelspec list | grep $venv_name"`"
 
 printf "\n\n"
 
