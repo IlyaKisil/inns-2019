@@ -53,10 +53,10 @@ pip install --no-cache-dir --upgrade pip
 echo -e "\n\nInstalling `green "JupyterLab and Node.js"`\n\n"
 conda install -y -c conda-forge nodejs jupyterlab
 
-echo -e "\n\nInstalling packages specified in `green $PWD/"requirements.txt"`\n\n"
+echo -e "\n\nInstalling packages specified in `green $PWD"/binder/requirements.txt"`\n\n"
 pip install -r binder/requirements.txt --no-cache-dir
 
-echo -e "\n\nInstalling extensions for JupyterLab specified in `green $PWD/"postBuild"`\n\n"
+echo -e "\n\nInstalling extensions for JupyterLab specified in `green $PWD"/binder/postBuild"`\n\n"
 sh -e binder/postBuild
 
 printf "\n"

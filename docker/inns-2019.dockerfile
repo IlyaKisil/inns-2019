@@ -17,7 +17,8 @@ RUN chown -R ${NB_UID} ${HOME}
 
 USER ${NB_USER}
 WORKDIR ${HOME}
-RUN binder/bootstrap_venv.sh $VENV_NAME
+RUN binder/bootstrap_venv.sh $VENV_NAME && \
+    rm -rf ${HOME}/.cache/*
 
 CMD ["/bin/bash", "-c", \
      "source activate $VENV_NAME && jupyter lab --port=8888 --ip=0.0.0.0 --no-browser"]
