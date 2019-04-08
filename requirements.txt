@@ -1,0 +1,3 @@
+# Trigger installation of utils with the use of 'setup.py'.
+# All requirements should be specified in 'setup.py'.
+-e .

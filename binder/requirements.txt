@@ -1,7 +1,0 @@
-ipykernel
-matplotlib
-seaborn
-numpy
-pandas
-scipy
-hottbox

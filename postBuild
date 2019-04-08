@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# Author: Ilya Kisil <ilyakisil@gmail.com>
+
+# Source project wide setup variables
+source variables.sh
+
+BINDER_BUILD=1
+
+### Parse arguments
+for arg in "$@"; do
+    case ${arg} in
+        --local-build)
+            BINDER_BUILD=0
+            ;;
+        *)
+            # Skip unknown option
+            ;;
+    esac
+    shift
+done
+
+DOWNLOAD_HOME=${PROJECT_HOME}/"data"
+DATA_URL="http://www.commsp.ee.ic.ac.uk/~csp-mandic/html/projects/inns_2019/data/ETH80.zip"
+wget --quiet \
+     --show-progress \
+     --directory-prefix=${DOWNLOAD_HOME} \
+     ${DATA_URL} && (cd ${DOWNLOAD_HOME} && unzip -qq ETH80.zip && rm -rf ETH80.zip)
+
+
+# Install kernel for consistency with local installations
+python -m ipykernel install --user --name ${VENV_NAME} --display-name ${VENV_NAME}
+
+
+# Install jupyterlab extensions if executed during binder build
+if [[ ($BINDER_BUILD == 1) ]]; then
+    pip install jupyterlab==0.35.3
+    jupyter labextension install @jupyterlab/toc --no-build
+    jupyter lab clean
+    jupyter lab build
+fi
