@@ -15,7 +15,7 @@ VERSION = "0.1.1"
 
 # Required packages for this tutorial
 REQUIRED = [
-      "pip==19.0.3"
+      "pip==19.0.3",
       "ipykernel",
       "matplotlib",
       "seaborn",
