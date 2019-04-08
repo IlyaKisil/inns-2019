@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Author: Ilya Kisil <ilyakisil@gmail.com>
+
+# Source project wide setup variables
+source variables.sh
+
+DATA_URL="http://www.commsp.ee.ic.ac.uk/~csp-mandic/media/data/2019-04-18_INNS-2019/"
+
+BINDER_BUILD=1
+
+### Parse arguments
+for arg in "$@"; do
+    case ${arg} in
+        --local-build)
+            BINDER_BUILD=0
+            ;;
+        *)
+            # Skip unknown option
+            ;;
+    esac
+    shift
+done
+
+
+# Get data from csp-mandic
+DATA_HOME=${PROJECT_HOME}/"data"
+wget -q -r -np -nd -R "index.html*" -P ${DATA_HOME} ${DATA_URL}
+
+
+# Install kernel for consistency with local installations
+python -m ipykernel install --user --name ${VENV_NAME} --display-name ${VENV_NAME}
+
+
+
+# Install jupyterlab extensions if executed during binder build
+if [[ ($BINDER_BUILD == 1) ]]; then
+    pip install jupyterlab==0.35.3
+    jupyter labextension install @jupyterlab/toc --no-build
+    jupyter lab clean
+    jupyter lab build
+fi
