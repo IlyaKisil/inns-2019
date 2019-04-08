@@ -1,3 +1,7 @@
-ipywidgets==7.3
 ipykernel
-plotly
+matplotlib
+seaborn
+numpy
+pandas
+scipy
+hottbox

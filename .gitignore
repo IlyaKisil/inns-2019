@@ -5,6 +5,12 @@ Untitled*.ipynb
 .reports/
 docker/inns-2019-test.dockerfile
 Dockerfile
+binder/inns/inns/data/
+
+# Don't ignore this file no matter where it is located
+!*.gitkeep
+
+
 
 
 ########################
