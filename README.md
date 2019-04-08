@@ -12,6 +12,7 @@ Last Update: 2019-04-08
 - [I want to follow along on my PC](#i-want-to-follow-along-on-my-pc)
   - [Getting source files](#getting-source-files)
   - [Preparing working environment](#preparing-working-environment)
+  - [Start Jupyter Lab](#start-jupyter-lab)
 - [Reporting problems and issues](#reporting-problems-and-issues)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
