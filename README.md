@@ -61,10 +61,10 @@ If you are on **Windows**, then you can replicate `bootstrap-ven.sh` with the fo
     python -m ipykernel install --user --name "inns-2019" --display-name "inns-2019"
     ```
     
-1. Then download [this dataset](http://www.commsp.ee.ic.ac.uk/~csp-mandic/html/projects/inns_2019/data/) and extract it into the `data` directory.
+1. Then download [this dataset](http://www.commsp.ee.ic.ac.uk/~csp-mandic/html/projects/inns_2019/data/ETH80.zip) and extract it into the `data` directory.
 
 
- > **Note:** Regardless, of your operating system, make sure that you have [Anaconda]((https://www.anaconda.com/download/)) and [Jupyter Lab](https://github.com/jupyterlab/jupyterlab#installation) installed.
+ > **Note:** Regardless, of your operating system, make sure that you have [Anaconda](https://www.anaconda.com/download/) and [Jupyter Lab](https://github.com/jupyterlab/jupyterlab#installation) installed.
 
 
 ### Start Jupyter Lab
@@ -72,6 +72,11 @@ If you are on **Windows**, then you can replicate `bootstrap-ven.sh` with the fo
 cd inns-2019
 jupyter lab
 ```
+
+## Supplementary materials and references
+-   Slides
+-   Link to the `hottbox-tutorials`
+
 
 ## Reporting problems and issues
 
