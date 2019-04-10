@@ -5,6 +5,7 @@ from setuptools import setup, find_packages
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
+
 NAME = 'inns'
 DESCRIPTION = 'Materials for interactive tutorial at INNS 2019'
 URL = 'https://github.com/IlyaKisil/inns-2019'
@@ -13,18 +14,18 @@ AUTHOR = 'Ilya Kisil'
 REQUIRES_PYTHON = '>=3.6.0'
 VERSION = "0.1.1"
 
+
 # Required packages for this tutorial
 REQUIRED = [
-      "pip==19.0.3",
-      "ipykernel",
-      "matplotlib",
-      "seaborn",
-      "numpy",
-      "pandas",
-      "scipy",
-      "hottbox",
+      "ipykernel==5.1.0",
+      "matplotlib==3.0.3",
+      "seaborn==0.9.0",
+      "numpy==1.16.2",
+      "pandas==0.24.2",
+      "scipy==1.2.1",
+      "scikit-learn==0.20.3",
+      "ipywidgets==7.4.2",
 ]
-
 
 
 # Import the README and use it as the long-description.
@@ -34,6 +35,7 @@ try:
         long_description = '\n' + f.read()
 except FileNotFoundError:
     long_description = DESCRIPTION
+
 
 config = dict(
       name=NAME,
