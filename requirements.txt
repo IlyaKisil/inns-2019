@@ -1,8 +1,6 @@
-pip==19.0.3
-
-# Trigger installation of utils with the use of 'setup.py'.
-# All requirements should be specified in 'setup.py'.
--e .
+# Trigger installation of inns utils.
+# All requirements should be specified in its 'setup.py'.
+-e inns
 
 # Install hottbox from branch that contains Tensor Ensemble Learning
 # TODO: Include hottbox in 'setup.py' when TEL will be release to pypi

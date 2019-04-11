@@ -6,9 +6,10 @@ from pathlib import Path
 from hottbox.core import Tensor
 
 
-_DATA_HOME = os.path.join(Path(os.path.dirname(__file__)).parent, "data")
-
-ETH80_HOME = os.path.join(_DATA_HOME, 'ETH80')
+# Ideally we would want to have an environment variable
+_INNS_2019_HOME = Path(__file__).resolve().parents[2]
+_DATA_HOME = os.path.join(_INNS_2019_HOME, "data")
+_ETH80_HOME = os.path.join(_DATA_HOME, 'ETH80')
 
 
 class ETH80(object):
@@ -53,7 +54,7 @@ class ETH80(object):
         -------
         df : pd.DataFrame
         """
-        meta_data_path = os.path.join(ETH80_HOME, 'meta_data.csv')
+        meta_data_path = os.path.join(_ETH80_HOME, 'meta_data.csv')
         df = pd.read_csv(meta_data_path, dtype={'Angle_1': str, 'Angle_2': str, 'Label': 'int8'})
         df['id'] = df.apply(lambda x: '-'.join([x['Object'], x['Angle_1'], x['Angle_2']]), axis=1)
         return df
@@ -119,7 +120,7 @@ class ETH80(object):
                              "Most likely, the specified pair(s) of `angle_1` and `angle_2` does not exist. \n"
                              "HINT: Use 'available_angle_pairs' and 'available_objects' to see correct options.")
 
-        path = df.apply(lambda x: os.path.join(ETH80_HOME, "original", "{}.npz".format(x['id'])),
+        path = df.apply(lambda x: os.path.join(_ETH80_HOME, "original", "{}.npz".format(x['id'])),
                         axis=1
                         )
         data_as_series = path.apply(lambda x: np.load(x)['image'].astype(np.float))
