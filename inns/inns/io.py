@@ -183,12 +183,10 @@ def tensor_to_image(tensor):
     image : np.ndarray
     """
     if isinstance(tensor, Tensor):
-        image = tensor.data
-        image -= tensor.data.min()
-        image /= tensor.data.max()
+        image = tensor.data.copy()
     else:
-        image = tensor
-        image -= tensor.min()
-        image /= tensor.max()
+        image = tensor.copy()
+    image -= image.min()
+    image /= image.max()
     image *= 255
     return image.astype(np.uint8)
