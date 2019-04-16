@@ -21,11 +21,24 @@ for arg in "$@"; do
 done
 
 DOWNLOAD_HOME=${PROJECT_HOME}/"data"
-DATA_URL="http://www.commsp.ee.ic.ac.uk/~csp-mandic/html/projects/inns_2019/data/ETH80.zip"
-wget --quiet \
-     --show-progress \
-     --directory-prefix=${DOWNLOAD_HOME} \
-     ${DATA_URL} && (cd ${DOWNLOAD_HOME} && unzip -qq ETH80.zip && rm -rf ETH80.zip)
+DATA_URL_HOME="http://www.commsp.ee.ic.ac.uk/~csp-mandic/html/projects/inns_2019/data"
+DATA_FILE_NAME="ETH80.zip"
+DATA_URL=${DATA_URL_HOME}/${DATA_FILE_NAME}
+if [[ -x "$(command -v wget)" ]]; then
+    wget --quiet \
+         --show-progress \
+         --directory-prefix=${DOWNLOAD_HOME} \
+         ${DATA_URL} && (cd ${DOWNLOAD_HOME} && unzip -qq ${DATA_FILE_NAME} && rm -rf ${DATA_FILE_NAME})
+
+elif [[ -x "$(command -v curl)" ]]; then
+    (cd ${DOWNLOAD_HOME} && curl -O ${DATA_URL} && unzip -qq ${DATA_FILE_NAME} && rm -rf ${DATA_FILE_NAME})
+else
+    printf "\n\n"
+    printf "==> WARNING: Could not download data!!!\n\n"
+    printf "Please, download and extract it into '${DOWNLOAD_HOME}',\n"
+    printf "Link: ${DATA_URL}\n"
+    printf "\n\n"
+fi
 
 
 # Install kernel for consistency with local installations
