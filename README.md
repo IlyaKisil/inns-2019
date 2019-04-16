@@ -87,6 +87,7 @@ jupyter lab
 -   Cichocki, Andrzej, et al. "Tensor networks for dimensionality reduction and large-scale optimization: Part 1 low-rank tensor decompositions." Foundations and Trends® in Machine Learning 9.4-5 (2016): 249-429.
 -   De Lathauwer, Lieven, et al. "A multilinear singular value decomposition." SIAM journal on Matrix Analysis and Applications 21.4 (2000): 1253-1278.
 -   Fanaee-T, Hadi, et al. "Tensor-based anomaly detection: An interdisciplinary survey." Knowledge-Based Systems 98 (2016): 130-147.
+-   Kisil, Ilia, et al. "Tensor ensemble learning for multidimensional data." 2018 IEEE Global Conference on Signal and Information Processing (2018): 1358-1362.
 
 
 ## Reporting problems and issues
