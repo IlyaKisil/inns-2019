@@ -6,13 +6,15 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents** generated with [DocToc](https://github.com/thlorenz/doctoc) 
 
-Last Update: 2019-04-08
+Last Update: 2019-04-16
 
 - [I want to follow along in a Cloud](#i-want-to-follow-along-in-a-cloud)
 - [I want to follow along on my PC](#i-want-to-follow-along-on-my-pc)
   - [Getting source files](#getting-source-files)
   - [Preparing working environment](#preparing-working-environment)
   - [Start Jupyter Lab](#start-jupyter-lab)
+- [Supplementary materials](#supplementary-materials)
+- [Literature references](#literature-references)
 - [Reporting problems and issues](#reporting-problems-and-issues)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -73,9 +75,18 @@ cd inns-2019
 jupyter lab
 ```
 
-## Supplementary materials and references
--   Slides
--   Link to the `hottbox-tutorials`
+## Supplementary materials
+-   HOTTBOX [tutorials](https://github.com/hottbox/hottbox-tutorials) and [documentation](https://hottbox.github.io)
+-   [Slides](http://www.commsp.ee.ic.ac.uk/~csp-mandic/html/projects/inns_2019/data/2019-04-18_INNS_presentation.pdf) for this tutorial talk
+-   [Home page](http://www.commsp.ee.ic.ac.uk/~csp-mandic/html/projects/inns_2019/) of this project
+
+
+## Literature references
+-   Kolda, Tamara G., et al. "Tensor decompositions and applications." SIAM review 51.3 (2009): 455-500.
+-   Cichocki, Andrzej, et al. "Tensor decompositions for signal processing applications: From two-way to multiway component analysis." IEEE Signal Processing Magazine 32.2 (2015): 145-163.
+-   Cichocki, Andrzej, et al. "Tensor networks for dimensionality reduction and large-scale optimization: Part 1 low-rank tensor decompositions." Foundations and Trends® in Machine Learning 9.4-5 (2016): 249-429.
+-   De Lathauwer, Lieven, et al. "A multilinear singular value decomposition." SIAM journal on Matrix Analysis and Applications 21.4 (2000): 1253-1278.
+-   Fanaee-T, Hadi, et al. "Tensor-based anomaly detection: An interdisciplinary survey." Knowledge-Based Systems 98 (2016): 130-147.
 
 
 ## Reporting problems and issues
